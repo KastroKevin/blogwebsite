@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <br><br><br>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Agregar Post</span></div>
+        <div class="card-body">
+          <%= simple_form_for @post do |f| %>
+            <%= f.input :title, label: 'Titulo' %>
+            <%= f.input :description, label: 'Descripcion' %>
+            <%= f.input :image %>
+            <%= f.submit "Crear Post", class: "btn btn-block btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

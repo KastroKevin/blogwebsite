@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h3 class="text-center">Tu Busqueda: <%= params[:title] %></h3>
+
+      <br><br>
+      <% @posts.each do |post| %>
+        <div class="card">
+          <div class="card-header"><span class="card-title"><%= post.title %></span></div>
+          <div class="card-body">
+            <p class="card-text">
+              <%= post.description %>
+            </p>
+          </div>
+        </div>
+        <br>
+        <br>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <span class="card-title">
+    <%= comment.user.email %>
+    <strong class="float-right">
+      <%= time_ago_in_words(comment.created_at) %> atras
+    </strong>
+    </span>
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      <%= comment.comment %>
+    </p>
+  </div>
+</div>
+<br>

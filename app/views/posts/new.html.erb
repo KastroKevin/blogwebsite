@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <br><br><br>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Agregar Post</span></div>
+        <div class="card-body">
+          <%= simple_form_for @post do |f| %>
+            <%= f.input :title, label: 'Titulo' %>
+            <%= f.input :description, label: 'Descripcion' %>
+            <label for="file-upload" class="subir">
+              <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+            </label>
+            <div id="info"></div>
+            <%= f.input :image, input_html: { style: 'display: none', onchange: 'cambiar()', id: 'file-upload'} %>
+            <%= f.submit "Crear Post", class: "btn btn-block btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .subir{
+    padding: 5px 10px;
+    background: #f55d3e;
+    color:#fff;
+    border:0px solid #fff;
+  }
+
+  .subir:hover{
+    color:#fff;
+    background: #f7cb15;
+  }
+</style>
+<script type="text/javascript" charset="utf-8">
+  function cambiar() {
+      var pdrs = document.getElementById('file-upload').files[0].name;
+      document.getElementById('info').innerHTML = pdrs;
+  }
+</script>

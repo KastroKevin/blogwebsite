@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7 offset-md-1">
+      <br><br><br>
+      <% @posts.each do |post| %>
+        <div class="card arrriba" onclick="postIndex(<%= post.id %>)">
+          <div class="card-header"><span class="card-title"><%= post.title %> <strong class="float-right"><%= time_ago_in_words(post.created_at) %></strong></span></div>
+          <div class="card-body">
+            <p class="card-text padin">
+              <%= post.description %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <p>Creado Por <strong><%= post.user.email %></strong></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-3">
+      <br><br><br>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Buscador</span></div>
+        <div class="card-body">
+          <form action="search" method="get" class="form-inline float-lg-left">
+            <input type="text" class="form-control" name="title" placeholder="Escribe Tu Busqueda">
+            <input type="submit" value="Buscar" class="btn btn-success">
+          </form>
+        </div>
+      </div>
+      <div class="card arrriba">
+        <div class="card-header"><span class="card-title">Talvez Te Interese?</span></div>
+        <div class="card-body white">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dicta doloremque fugiat illo iste nulla reprehenderit sit ullam. Consequuntur, ratione!
+        </div>
+      </div>
+      <div class="card arrriba">
+        <div class="card-header"><span class="card-title">Talvez Te Interese?</span></div>
+        <div class="card-body white">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dicta doloremque fugiat illo iste nulla reprehenderit sit ullam. Consequuntur, ratione!
+        </div>
+      </div>
+      <div class="card arrriba">
+        <div class="card-header"><span class="card-title">Talvez Te Interese?</span></div>
+        <div class="card-body white">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dicta doloremque fugiat illo iste nulla reprehenderit sit ullam. Consequuntur, ratione!
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br>
+      <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
+    </div>
+  </div>
+</div>
+<script>
+  function postIndex(id) {
+      window.location.href = `/posts/${id}`
+  }
+</script>

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <br><br><br>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="text-center">Bienvenido <%= current_user.email %></h3>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+  <div class="row">
+    <div class="col-md-8">
+      <h5 class="text-left">Post Creados</h5>
+      <br>
+      <% @posts.each do |post| %>
+        <div class="card">
+          <div class="card-header"><span class="card-title"><%= post.title %></span></div>
+          <div class="card-body">
+            <p class="card-text">
+              <%= post.description %>
+            </p>
+          </div>
+        </div>
+        <br>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h5 class="text-right">Tu Informacion</h5>
+      <div class="card">
+        <div class="card-body">
+          <%= current_user.email %>
+          <br>
+          <br>
+          <% if current_user.profile.attached? %>
+            <%= image_tag url_for(current_user.profile), height: 50 %>
+          <% end %>
+          <hr>
+          post creados <%= current_user.posts.count %>
+        </div>
+        <div class="card-footer">
+          <p class="text-center">Editar Perfil</p>
+          <%= simple_form_for(current_user) do |f| %>
+            <%= f.input :email %>
+            <%= f.input :profile %>
+            <%= f.submit "Actualizar", class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
